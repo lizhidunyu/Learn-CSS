@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        height: 1700px;
+        background-color: skyblue;
+      }
+      [class^="item"] {
+        background-color: pink;
+        width: 50px;
+        display: inline-block;
+        border: 1px solid black;
+        height: 50px;
+      }
+
+      .item2 {
+        position: relative;
+        left: 20px;
+        top: 20px;
+        z-index: 0.9;
+      }
+
+      .item2 span {
+        width: 50px;
+        height: 20px;
+        z-index: 3;
+        position: relative;
+        display: inline-block;
+        background-color: blueviolet;
+      }
+
+      .item3 {
+        position: relative;
+        left: -10px;
+        z-index: 2;
+        top: 10px;
+      }
+
+      .item11 {
+        position: relative;
+        top: 40px;
+        left: 60px;
+        z-index: 2;
+      }
+
+      .item11 span {
+        width: 50px;
+        height: 20px;
+        z-index: 99;
+        position: relative;
+        display: inline-block;
+        background-color: rgb(91, 202, 39);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="father">
+      <div class="item1"></div>
+      <div class="item11">
+        <span>11</span>
+        <span>22</span>
+        <span>33</span>
+      </div>
+      <div class="item2">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+      </div>
+      <div class="item3"></div>
+      <div class="item4"></div>
+    </div>
+  </body>
+</html>

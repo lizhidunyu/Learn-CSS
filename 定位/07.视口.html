@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 尝试注释掉这一行观察布局视口的不同 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viewport Demo</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .info {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        font-family: monospace;
+        padding: 1em;
+        z-index: 9999;
+      }
+
+      .wide-box {
+        width: 1000px;
+        height: 200px;
+        background-color: lightblue;
+        margin: 100px auto;
+        text-align: center;
+        line-height: 200px;
+        font-size: 24px;
+        color: #333;
+      }
+
+      .viewport-line {
+        position: fixed;
+        top: 0;
+        left: 100vw;
+        width: 2px;
+        height: 100vh;
+        background: red;
+        z-index: 9998;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="info" id="info">Calculating viewports...</div>
+
+    <div class="viewport-line"></div>
+
+    <div class="wide-box">我是宽 1000px 的盒子</div>
+
+    <script>
+      function updateInfo() {
+        const layoutViewport = document.documentElement.clientWidth;
+        const visualViewport = window.innerWidth;
+
+        document.getElementById("info").innerText = `
+💡 布局视口 (document.documentElement.clientWidth): ${layoutViewport}px
+👀 视觉视口 (window.innerWidth): ${visualViewport}px
+📱 理想视口（通常为 device-width）见 <meta viewport> 设置
+🔍 缩放比例: ${visualViewport / layoutViewport}
+      `.trim();
+      }
+
+      window.addEventListener("resize", updateInfo);
+      window.addEventListener("DOMContentLoaded", updateInfo);
+    </script>
+  </body>
+</html>
