@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .scrollDOM {
+        position: relative;
+        left: 180px;
+        top: 80px;
+        width: 200px;
+        height: 200px;
+        background-color: rgba(0, 0, 246, 0.5);
+        border: 2px solid red;
+        padding: 10px;
+        overflow: auto;
+      }
+      .inner {
+        width: 250px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scrollDOM">
+      <div class="inner">inner content xxxxxxxx xxxxxxxx</div>
+    </div>
+    <script>
+      const divEl = document.querySelector(".scrollDOM");
+      const debounceFn = (fn, delay) => {
+        let timer = null;
+        function _debounce(...args) {
+          if (timer) {
+            clearTimeout(timer)
+            timer = null
+          }
+          timer = setTimeout(() => {
+            fn(...args)
+          }, delay)
+        }
+        return _debounce
+      }
+      const debounceScrollFn = debounceFn(() => {
+        console.log("divEl.scrollWidth:", divEl.scrollWidth);
+        console.log("divEl.scrollHeight:", divEl.scrollHeight);
+        console.log("divEl.scrollTop:", divEl.scrollTop);
+        console.log("divEl.oscrollLeft:", divEl.scrollLeft);
+      }, 200)
+      divEl.addEventListener("scroll", debounceScrollFn);
+    </script>
+  </body>
+</html>

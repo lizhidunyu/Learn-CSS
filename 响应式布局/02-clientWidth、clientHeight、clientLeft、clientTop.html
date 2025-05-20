@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .clientDOM {
+        width: 200px;
+        height: 200px;
+        background-color: rgba(0, 0, 246, 0.5);
+        border-top: 2px solid red;
+        border-left: 4px solid red;
+        border-right: 2px solid red;
+        border-bottom: 2px solid red;
+        padding: 10px;
+        overflow: auto;
+      }
+      .inner {
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clientDOM">
+      <div class="inner"></div>
+    </div>
+    <script>
+      const divEl = document.querySelector(".clientDOM");
+      window.addEventListener("load", () => {
+        console.log("divEl.clientWidth:", divEl.clientWidth);
+        console.log("divEl.clientHeight:", divEl.clientHeight);
+        console.log("divEl.clientTop:", divEl.clientTop);
+        console.log("divEl.clientLeft:", divEl.clientLeft);
+      });
+    </script>
+  </body>
+</html>

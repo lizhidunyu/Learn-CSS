@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .offsetDOM {
+        position: relative;
+        left: 20px;
+        top: 80px;
+        width: 200px;
+        height: 200px;
+        background-color: rgba(0, 0, 246, 0.5);
+        border: 2px solid red;
+        padding: 10px;
+        overflow: auto;
+      }
+      .inner {
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="offsetDOM">
+      <div class="inner">inner content xxxxxxxx xxxxxxxx</div>
+    </div>
+    <script>
+      const divEl = document.querySelector(".offsetDOM");
+      window.addEventListener("load", () => {
+        console.log("divEl.offsetWidth:", divEl.offsetWidth);
+        console.log("divEl.offsetHeight:", divEl.offsetHeight);
+        console.log("divEl.offsetTop:", divEl.offsetTop);
+        console.log("divEl.offsetLeft:", divEl.offsetLeft);
+      });
+    </script>
+  </body>
+</html>

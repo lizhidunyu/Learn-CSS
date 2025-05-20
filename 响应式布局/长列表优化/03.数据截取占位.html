@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .container {
+            height: 405px;
+            width: 50%;
+            background-color: rgba(0, 0, 246, 0.5);
+            overflow-y: scroll;
+            border: 1px solid black;
+        }
+        .item {
+            border-bottom: 1px solid black;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+    </div>
+
+    <script>
+        const data = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+        const container = document.querySelector('.container');
+        function addList(data, container) {
+            data.forEach(item => {
+                const dom = document.createElement('div');
+                dom.setAttribute('class', 'item');
+                dom.innerHTML = item;
+                container.appendChild(dom)
+            });
+        }
+
+       container.addEventListener('scroll', () => {
+            const scrollTop = container.scrollTop;
+
+            // 上边空白的高度
+            const topHeight = scrollTop;
+            const startIndex = Math.max(Math.ceil(topHeight / 40) - 2, 0);
+            const endIndex = startIndex + Math.ceil(500 / 40);
+
+            const show = data.slice(startIndex, endIndex + 1);
+
+            // 计算下边剩余的隐藏区域高度
+            const dataHeight = data.length * 40;
+            const bottomHeight = dataHeight - 500 - scrollTop;
+
+            const topDom = document.createElement('div');
+            const bottomDom = document.createElement('div');
+            topDom.style.height = topHeight + 'px';
+            bottomDom.style.height = bottomHeight + 'px';
+
+            // 还没到底
+            if (bottomHeight > -100) {
+                // 清空
+                container.innerHTML = '';
+                container.appendChild(topDom);
+                addList(show, container);
+                container.appendChild(bottomDom);
+            }
+            });
+        window.onload = function() {
+            addList(data, container)
+        }
+    </script>
+  </body>
+</html>
